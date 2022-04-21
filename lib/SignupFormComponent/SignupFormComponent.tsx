@@ -5,7 +5,7 @@ export default function SignupFormComponent() {
   const [showDanger, setShowDanger] = useState(false)
 
   return (
-    <div className="relative mt-8 flex flex-col items-center rounded border bg-slate-50 p-8">
+    <div className="relative mt-8 flex max-w-xs flex-col items-center rounded border bg-slate-50 p-8">
       <input
         type="text"
         className="mb-4 rounded border p-4"
@@ -20,7 +20,7 @@ export default function SignupFormComponent() {
         <ButtonComponent type={ButtonType.Primary}>Log In</ButtonComponent>
         <ButtonComponent type={ButtonType.Primary}>Sign Up</ButtonComponent>
       </div>
-      <div className="flex flex-col space-y-4">
+      <div className="flex w-full flex-col justify-start space-y-4">
         <ButtonComponent type={ButtonType.Underlined}>
           Reset Password
         </ButtonComponent>
