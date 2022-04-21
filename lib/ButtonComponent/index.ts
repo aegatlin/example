@@ -1,1 +1,1 @@
-export { default } from './ButtonComponent'
+export { default, ButtonType, ButtonColor } from './ButtonComponent'

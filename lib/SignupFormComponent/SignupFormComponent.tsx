@@ -1,35 +1,49 @@
+import { useState } from 'react'
+import ButtonComponent, { ButtonColor, ButtonType } from '../ButtonComponent'
+
 export default function SignupFormComponent() {
+  const [showDanger, setShowDanger] = useState(false)
+
   return (
-    <div className="mt-8 flex flex-col items-center space-y-4 rounded border p-8">
+    <div className="relative mt-8 flex flex-col items-center rounded border bg-slate-50 p-8">
       <input
         type="text"
-        className="rounded border p-4"
+        className="mb-4 rounded border p-4"
         placeholder="username"
       />
       <input
         type="text"
-        className="rounded border p-4"
+        className="mb-8 rounded border p-4"
         placeholder="password"
       />
-      <div className="flex justify-between">
-        <ButtonComponent type="primary" />
-        <button>Log In</button>
-        <button>Create Account</button>
+      <div className="mb-8 flex w-full justify-between">
+        <ButtonComponent type={ButtonType.Primary}>Log In</ButtonComponent>
+        <ButtonComponent type={ButtonType.Primary}>Sign Up</ButtonComponent>
       </div>
-      <div>
-        <ButtonComponent type="underline" />
+      <div className="flex flex-col space-y-4">
+        <ButtonComponent type={ButtonType.Underlined}>
+          Reset Password
+        </ButtonComponent>
+        <ButtonComponent
+          type={ButtonType.Underlined}
+          imperceptible
+          onClick={() => setShowDanger(!showDanger)}
+        >
+          Reset Every. Single. Password.
+        </ButtonComponent>
       </div>
+      {showDanger && (
+        <div className="absolute bottom-0 flex w-full items-center justify-center">
+          <ButtonComponent
+            type={ButtonType.Primary}
+            color={ButtonColor.Red}
+            danger
+            onClick={() => setShowDanger(false)}
+          >
+            Mad Hax, No!!!
+          </ButtonComponent>
+        </div>
+      )}
     </div>
   )
-}
-
-interface ButtonComponentProps {
-  type: 'primary' | 'disabled' | 'underline'
-}
-
-const ButtonComponent: React.FC<ButtonComponentProps> = ({
-  type,
-  children,
-}) => {
-  return <button>{children}</button>
 }
